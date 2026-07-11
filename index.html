@@ -650,11 +650,13 @@ header p {
   display: flex;
   align-items: flex-start;
   gap: 14px;
+  cursor: pointer;
 }
 
 .dir-detail-topic-item:hover {
   border-color: var(--detail-accent, var(--gold));
   transform: translateX(6px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .dir-detail-topic-num {
@@ -2127,9 +2129,9 @@ function showDirectionDetail(dir) {
     </div>
 
     <div class="dir-detail-topics">
-      <div class="dir-detail-section-title">本方向可选题目</div>
+      <div class="dir-detail-section-title">本方向可选题目 <span style="font-size:11px;color:var(--text-muted);font-weight:400;margin-left:6px;">点击题目查看详情</span></div>
       ${dir.topics.map((t, i) => `
-        <div class="dir-detail-topic-item">
+        <div class="dir-detail-topic-item" data-topic-id="${t.id}">
           <div class="dir-detail-topic-num">${String(i + 1).padStart(2, '0')}</div>
           <div class="dir-detail-topic-info">
             <h4>${t.title}</h4>
@@ -2139,6 +2141,7 @@ function showDirectionDetail(dir) {
               <span class="topic-difficulty ${t.difficulty}">${diffMap[t.difficulty]}</span>
             </div>
           </div>
+          <div style="flex-shrink:0;display:flex;align-items:center;color:var(--text-muted);font-size:18px;opacity:0.5;">→</div>
         </div>
       `).join('')}
     </div>
@@ -2166,6 +2169,20 @@ function showDirectionDetail(dir) {
   listView.classList.add('hidden');
   detailView.classList.add('show');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Click handlers for topic items in direction detail
+  detailView.querySelectorAll('.dir-detail-topic-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const topicId = item.dataset.topicId;
+      const topic = dir.topics.find(t => t.id === topicId);
+      if (topic) {
+        selectedDirection = dir;
+        goToStep(2);
+        // After step 2 renders, immediately show this topic's detail
+        setTimeout(() => showTopicDetail(topic), 100);
+      }
+    });
+  });
 
   document.getElementById('selectDirBtn').addEventListener('click', (e) => {
     selectedDirection = directions.find(d => d.id === e.target.dataset.id);
