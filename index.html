@@ -1228,6 +1228,304 @@ header p {
   transform: rotate(45deg);
 }
 
+/* ===== Supervisor Detail View ===== */
+.sup-detail-view { display: none; animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.sup-detail-view.show { display: block; }
+.sup-list-view.hidden { display: none; }
+
+.sup-detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  margin-bottom: 28px;
+  font-family: inherit;
+}
+
+.sup-detail-back:hover {
+  background: var(--glass-hover);
+  color: var(--text-primary);
+  border-color: rgba(74, 143, 231, 0.3);
+  transform: translateX(-4px);
+}
+
+.sup-detail-back svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.sup-detail-hero {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-lift);
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sup-detail-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--sup-accent, var(--blue));
+  box-shadow: 0 0 16px var(--sup-accent, var(--blue));
+}
+
+.sup-detail-hero::after {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: var(--sup-accent-bg, rgba(74, 143, 231, 0.06));
+  filter: blur(40px);
+}
+
+.sup-detail-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.sup-detail-tag {
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 14px;
+  border-radius: 100px;
+  background: var(--sup-accent-bg, rgba(74, 143, 231, 0.1));
+  color: var(--sup-accent, var(--blue));
+  margin-bottom: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+.sup-detail-hero h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.sup-detail-hero .sup-detail-title-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.sup-detail-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.sup-detail-stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.sup-detail-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.sup-detail-stat strong {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sup-accent, var(--blue));
+}
+
+.sup-detail-section {
+  margin-bottom: 28px;
+}
+
+.sup-detail-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sup-detail-section-title::before {
+  content: '';
+  width: 3px;
+  height: 18px;
+  background: var(--sup-accent, var(--blue));
+  border-radius: 2px;
+}
+
+.sup-detail-research-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sup-detail-research-tags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+}
+
+.sup-detail-research-tags span:hover {
+  border-color: var(--sup-accent, var(--blue));
+  color: var(--sup-accent, var(--blue));
+}
+
+.sup-detail-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.sup-detail-info-item {
+  background: rgba(10, 20, 45, 0.4);
+  border: 1px solid rgba(100, 140, 220, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+}
+
+.sup-detail-info-item .info-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.sup-detail-info-item .info-value {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.sup-detail-info-item .info-value.slots-ok { color: var(--cyan); }
+.sup-detail-info-item .info-value.slots-full { color: #E89A9A; }
+
+.sup-detail-directions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sup-detail-dir-item {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.3s ease;
+}
+
+.sup-detail-dir-item:hover {
+  border-color: var(--sup-accent, var(--blue));
+  transform: translateX(6px);
+}
+
+.sup-detail-dir-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.sup-detail-dir-info h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sup-detail-dir-info p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.sup-detail-action {
+  text-align: center;
+  padding: 12px 0;
+}
+
+.sup-detail-action .btn-primary {
+  padding: 16px 48px;
+  font-size: 16px;
+}
+
+.sup-detail-action .btn-disabled {
+  padding: 16px 48px;
+  font-size: 16px;
+  opacity: 0.5;
+  cursor: not-allowed;
+  border: none;
+  background: rgba(100, 140, 220, 0.15);
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+}
+
+@media (max-width: 768px) {
+  .sup-detail-info-grid { grid-template-columns: 1fr; }
+  .sup-detail-hero { padding: 24px 20px; }
+  .sup-detail-hero h2 { font-size: 22px; }
+}
+
 /* ===== Confirmation Panel ===== */
 .confirm-panel {
   max-width: 720px;
@@ -1570,14 +1868,25 @@ footer {
 
   <!-- Step 3: Supervisor Selection -->
   <div class="step-panel" id="panel-3">
-    <div class="section-title">
-      <h2>选择指导导师</h2>
-      <p>选择与你研究方向匹配的导师，建议优先选择有余额的导师</p>
+    <!-- Supervisor List View -->
+    <div class="sup-list-view" id="supListView">
+      <div class="section-title">
+        <h2>选择指导导师</h2>
+        <p>选择与你研究方向匹配的导师，点击卡片查看详细信息</p>
+      </div>
+      <div class="supervisor-grid" id="supervisorsGrid"></div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" id="backToStep2">上一步</button>
+      </div>
     </div>
-    <div class="supervisor-grid" id="supervisorsGrid"></div>
-    <div class="nav-buttons">
-      <button class="btn btn-secondary" id="backToStep2">上一步</button>
-      <button class="btn btn-primary" id="toStep4" disabled>下一步：确认信息</button>
+
+    <!-- Supervisor Detail View -->
+    <div class="sup-detail-view" id="supDetailView">
+      <button class="sup-detail-back" id="backToSupList">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        返回导师列表
+      </button>
+      <div id="supDetailContent"></div>
     </div>
   </div>
 
@@ -1988,6 +2297,11 @@ document.getElementById('backToTopicList').addEventListener('click', () => {
 // ===== Render Supervisors =====
 function renderSupervisors() {
   const grid = document.getElementById('supervisorsGrid');
+  const listView = document.getElementById('supListView');
+  // Update section title with current direction
+  listView.querySelector('.section-title p').innerHTML = 
+    `当前方向：<span style="color:var(--gold);font-weight:500;">${selectedDirection.name}</span> · 点击导师卡片查看详细信息`;
+
   const matched = supervisors.filter(s => s.directions.includes(selectedDirection.id));
   const others = supervisors.filter(s => !s.directions.includes(selectedDirection.id));
   const all = [...matched, ...others];
@@ -1996,11 +2310,11 @@ function renderSupervisors() {
     const isMatched = matched.includes(s);
     const slotsFull = s.slots === 0;
     return `
-      <div class="supervisor-card ${isMatched ? '' : ''}" data-id="${s.id}" ${slotsFull ? 'data-full="true"' : ''}>
+      <div class="supervisor-card" data-id="${s.id}" ${slotsFull ? 'data-full="true"' : ''}>
         <div class="supervisor-header">
           <div class="supervisor-avatar" style="background:linear-gradient(135deg,${s.color},${s.color}aa);">${s.avatar}</div>
           <div class="supervisor-name-row">
-            <h4>${s.name}${isMatched ? ' <span style="font-size:11px;color:var(--cyan);background:rgba(94,227,224,0.08);border:1px solid rgba(94,227,224,0.12);padding:2px 8px;border-radius:6px;margin-left:6px;">方向匹配</span>' : ''}</h4>
+            <h4>${s.name}${isMatched ? ' <span style="font-size:11px;color:var(--cyan);background:rgba(94,227,224,0.08);border:1px solid rgba(94,227,224,0.12);padding:2px 8px;border-radius:6px;margin-left:6px;">方向匹配</span>' : ''}${slotsFull ? ' <span style="font-size:11px;color:#E89A9A;background:rgba(232,154,154,0.08);border:1px solid rgba(232,154,154,0.12);padding:2px 8px;border-radius:6px;margin-left:6px;">名额已满</span>' : ''}</h4>
             <div class="supervisor-title">${s.title}</div>
           </div>
         </div>
@@ -2023,17 +2337,105 @@ function renderSupervisors() {
   grid.querySelectorAll('.supervisor-card').forEach(card => {
     card.addEventListener('click', () => {
       const sup = supervisors.find(s => s.id === card.dataset.id);
-      if (sup.slots === 0) {
-        alert('该导师名额已满，请选择其他导师');
-        return;
-      }
-      grid.querySelectorAll('.supervisor-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      selectedSupervisor = sup;
-      document.getElementById('toStep4').disabled = false;
+      showSupervisorDetail(sup);
     });
   });
 }
+
+// ===== Show Supervisor Detail =====
+function showSupervisorDetail(sup) {
+  const listView = document.getElementById('supListView');
+  const detailView = document.getElementById('supDetailView');
+  const content = document.getElementById('supDetailContent');
+  const slotsFull = sup.slots === 0;
+  const isMatched = sup.directions.includes(selectedDirection.id);
+  const matchedDirs = directions.filter(d => sup.directions.includes(d.id));
+
+  content.innerHTML = `
+    <div class="sup-detail-hero" style="--sup-accent:${sup.color};--sup-accent-bg:${sup.color}22;">
+      <div class="sup-detail-avatar" style="background:linear-gradient(135deg,${sup.color},${sup.color}aa);">${sup.avatar}</div>
+      <span class="sup-detail-tag">${isMatched ? '方向匹配' : '其他方向'}${slotsFull ? ' · 名额已满' : ''}</span>
+      <h2>${sup.name}</h2>
+      <div class="sup-detail-title-text">${sup.title}</div>
+      <p class="sup-detail-desc">${sup.desc}</p>
+      <div class="sup-detail-stats">
+        <div class="sup-detail-stat">📊 剩余 <strong>${sup.slots}</strong> / ${sup.total} 个名额</div>
+        <div class="sup-detail-stat">🔬 <strong>${sup.research.length}</strong> 个研究方向</div>
+        <div class="sup-detail-stat">🎯 指导 <strong>${matchedDirs.length}</strong> 个方向</div>
+      </div>
+    </div>
+
+    <div class="sup-detail-section">
+      <div class="sup-detail-section-title">研究方向</div>
+      <div class="sup-detail-research-tags">
+        ${sup.research.map(r => `<span>🔬 ${r}</span>`).join('')}
+      </div>
+    </div>
+
+    <div class="sup-detail-section">
+      <div class="sup-detail-section-title">基本信息</div>
+      <div class="sup-detail-info-grid">
+        <div class="sup-detail-info-item">
+          <div class="info-label">职称</div>
+          <div class="info-value">${sup.title.split(' · ')[0]}</div>
+        </div>
+        <div class="sup-detail-info-item">
+          <div class="info-label">导师类型</div>
+          <div class="info-value">${sup.title.split(' · ')[1] || '硕士研究生导师'}</div>
+        </div>
+        <div class="sup-detail-info-item">
+          <div class="info-label">剩余名额</div>
+          <div class="info-value ${slotsFull ? 'slots-full' : 'slots-ok'}">${sup.slots} / ${sup.total}</div>
+        </div>
+        <div class="sup-detail-info-item">
+          <div class="info-label">方向匹配</div>
+          <div class="info-value">${isMatched ? '✓ 匹配当前方向' : '其他方向导师'}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sup-detail-section">
+      <div class="sup-detail-section-title">指导的设计方向</div>
+      <div class="sup-detail-directions">
+        ${matchedDirs.map(d => `
+          <div class="sup-detail-dir-item" style="--sup-accent:${sup.color};">
+            <div class="sup-detail-dir-icon" style="background:${d.colorBg};">${d.icon}</div>
+            <div class="sup-detail-dir-info">
+              <h4>${d.name} ${d.id === selectedDirection.id ? '<span style="font-size:11px;color:var(--cyan);margin-left:4px;">当前选择</span>' : ''}</h4>
+              <p>${d.tag} · ${d.meta.topics} 个可选题目</p>
+            </div>
+          </div>
+        `).join('') || '<p style="color:var(--text-muted);font-size:14px;">暂无匹配方向</p>'}
+      </div>
+    </div>
+
+    <div class="sup-detail-action">
+      ${slotsFull 
+        ? '<button class="btn-disabled" disabled>该导师名额已满，请选择其他导师</button>'
+        : '<button class="btn btn-primary" id="selectSupBtn" data-id="' + sup.id + '">选择此导师，确认选题信息 →</button>'
+      }
+    </div>
+  `;
+
+  listView.classList.add('hidden');
+  detailView.classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const selectBtn = document.getElementById('selectSupBtn');
+  if (selectBtn) {
+    selectBtn.addEventListener('click', (e) => {
+      selectedSupervisor = supervisors.find(s => s.id === e.target.dataset.id);
+      goToStep(4);
+    });
+  }
+}
+
+// ===== Back to Supervisor List =====
+document.getElementById('backToSupList').addEventListener('click', () => {
+  document.getElementById('supListView').classList.remove('hidden');
+  document.getElementById('supDetailView').classList.remove('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 // ===== Render Confirmation =====
 function renderConfirmation() {
@@ -2071,7 +2473,12 @@ function goToStep(step) {
     document.getElementById('topicDetailView').classList.remove('show');
     renderTopics();
   }
-  if (step === 3) renderSupervisors();
+  if (step === 3) {
+    // Reset to supervisor list view
+    document.getElementById('supListView').classList.remove('hidden');
+    document.getElementById('supDetailView').classList.remove('show');
+    renderSupervisors();
+  }
   if (step === 4) renderConfirmation();
 }
 
@@ -2089,10 +2496,17 @@ document.getElementById('backToStep2').addEventListener('click', () => {
   // Reset to topic list view when going back to step 2
   document.getElementById('topicListView').classList.remove('hidden');
   document.getElementById('topicDetailView').classList.remove('show');
+  // Reset supervisor views too
+  document.getElementById('supListView').classList.remove('hidden');
+  document.getElementById('supDetailView').classList.remove('show');
   goToStep(2);
 });
-document.getElementById('toStep4').addEventListener('click', () => goToStep(4));
-document.getElementById('backToStep3').addEventListener('click', () => goToStep(3));
+document.getElementById('backToStep3').addEventListener('click', () => {
+  // Reset to supervisor list view when going back to step 3
+  document.getElementById('supListView').classList.remove('hidden');
+  document.getElementById('supDetailView').classList.remove('show');
+  goToStep(3);
+});
 
 document.getElementById('submitBtn').addEventListener('click', () => {
   const name = document.getElementById('studentName').value.trim();
