@@ -845,6 +845,250 @@ header p {
 .topic-difficulty.intermediate { background: rgba(232, 197, 108, 0.08); color: var(--gold); border: 1px solid rgba(232, 197, 108, 0.12); }
 .topic-difficulty.advanced { background: rgba(232, 154, 154, 0.08); color: #E89A9A; border: 1px solid rgba(232, 154, 154, 0.12); }
 
+/* ===== Topic Detail View ===== */
+.topic-detail-view { display: none; animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.topic-detail-view.show { display: block; }
+.topic-list-view.hidden { display: none; }
+
+.topic-detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  margin-bottom: 28px;
+  font-family: inherit;
+}
+
+.topic-detail-back:hover {
+  background: var(--glass-hover);
+  color: var(--text-primary);
+  border-color: rgba(232, 197, 108, 0.3);
+  transform: translateX(-4px);
+}
+
+.topic-detail-back svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.topic-detail-hero {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-lift);
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.topic-detail-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--gold);
+  box-shadow: 0 0 16px var(--gold-glow);
+}
+
+.topic-detail-hero::after {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(232, 197, 108, 0.06);
+  filter: blur(40px);
+}
+
+.topic-detail-num {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(232, 197, 108, 0.2), rgba(232, 197, 108, 0.05));
+  border: 1px solid rgba(232, 197, 108, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.topic-detail-hero h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+}
+
+.topic-detail-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.topic-detail-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.topic-detail-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.topic-detail-info-item {
+  background: rgba(10, 20, 45, 0.4);
+  border: 1px solid rgba(100, 140, 220, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+
+.topic-detail-info-item .info-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.topic-detail-info-item .info-value {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.topic-detail-section {
+  margin-bottom: 28px;
+}
+
+.topic-detail-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topic-detail-section-title::before {
+  content: '';
+  width: 3px;
+  height: 18px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.topic-detail-content-box {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 22px 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.topic-detail-content-box h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.topic-detail-content-box p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.topic-detail-direction-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.topic-detail-direction-card:hover {
+  border-color: var(--detail-accent, var(--gold));
+  transform: translateX(6px);
+}
+
+.topic-detail-direction-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.topic-detail-direction-info h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.topic-detail-direction-info p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.topic-detail-action {
+  text-align: center;
+  padding: 12px 0;
+}
+
+.topic-detail-action .btn-primary {
+  padding: 16px 48px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .topic-detail-info-grid { grid-template-columns: 1fr; }
+  .topic-detail-hero { padding: 24px 20px; }
+  .topic-detail-hero h2 { font-size: 20px; }
+}
+
 /* ===== Supervisor Cards ===== */
 .supervisor-grid {
   display: grid;
@@ -1302,14 +1546,25 @@ footer {
 
   <!-- Step 2: Topic Selection -->
   <div class="step-panel" id="panel-2">
-    <div class="section-title">
-      <h2>选择毕业设计题目</h2>
-      <p>当前方向：<span id="currentDirName" style="color:var(--gold);font-weight:500;"></span></p>
+    <!-- Topic List View -->
+    <div class="topic-list-view" id="topicListView">
+      <div class="section-title">
+        <h2>选择毕业设计题目</h2>
+        <p>当前方向：<span id="currentDirName" style="color:var(--gold);font-weight:500;"></span> · 点击题目卡片查看详细信息</p>
+      </div>
+      <div class="topic-list" id="topicsList"></div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" id="backToStep1">上一步</button>
+      </div>
     </div>
-    <div class="topic-list" id="topicsList"></div>
-    <div class="nav-buttons">
-      <button class="btn btn-secondary" id="backToStep1">上一步</button>
-      <button class="btn btn-primary" id="toStep3" disabled>下一步：选择导师</button>
+
+    <!-- Topic Detail View -->
+    <div class="topic-detail-view" id="topicDetailView">
+      <button class="topic-detail-back" id="backToTopicList">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        返回题目列表
+      </button>
+      <div id="topicDetailContent"></div>
     </div>
   </div>
 
@@ -1637,13 +1892,98 @@ function renderTopics() {
 
   list.querySelectorAll('.topic-card').forEach(card => {
     card.addEventListener('click', () => {
-      list.querySelectorAll('.topic-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      selectedTopic = selectedDirection.topics.find(t => t.id === card.dataset.id);
-      document.getElementById('toStep3').disabled = false;
+      const topic = selectedDirection.topics.find(t => t.id === card.dataset.id);
+      showTopicDetail(topic);
     });
   });
 }
+
+// ===== Show Topic Detail =====
+function showTopicDetail(topic) {
+  const listView = document.getElementById('topicListView');
+  const detailView = document.getElementById('topicDetailView');
+  const content = document.getElementById('topicDetailContent');
+  const topicIndex = selectedDirection.topics.findIndex(t => t.id === topic.id);
+  const diffMap = { basic: '基础', intermediate: '进阶', advanced: '挑战' };
+  const diffDesc = { basic: '适合有一定基础的同学，难度适中，可稳步完成', intermediate: '需要较好的专业基础，具有一定的挑战性', advanced: '难度较高，适合专业能力突出、有研究热情的同学' };
+
+  content.innerHTML = `
+    <div class="topic-detail-hero">
+      <div class="topic-detail-num">${String(topicIndex + 1).padStart(2, '0')}</div>
+      <h2>${topic.title}</h2>
+      <div class="topic-detail-tags">
+        ${topic.tags.map(tag => `<span class="topic-difficulty basic" style="background:rgba(94,227,224,0.08);color:var(--cyan);border:1px solid rgba(94,227,224,0.1);">${tag}</span>`).join('')}
+        <span class="topic-difficulty ${topic.difficulty}">${diffMap[topic.difficulty]}</span>
+      </div>
+      <p class="topic-detail-desc">${topic.desc}</p>
+      <div class="topic-detail-info-grid">
+        <div class="topic-detail-info-item">
+          <div class="info-label">所属方向</div>
+          <div class="info-value">${selectedDirection.icon} ${selectedDirection.name}</div>
+        </div>
+        <div class="topic-detail-info-item">
+          <div class="info-label">难度等级</div>
+          <div class="info-value">${diffMap[topic.difficulty]}</div>
+        </div>
+        <div class="topic-detail-info-item">
+          <div class="info-label">题目编号</div>
+          <div class="info-value">${topic.id.toUpperCase()}</div>
+        </div>
+        <div class="topic-detail-info-item">
+          <div class="info-label">研究方向标签</div>
+          <div class="info-value">${topic.tags.length} 个</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-detail-section">
+      <div class="topic-detail-section-title">题目详细说明</div>
+      <div class="topic-detail-content-box">
+        <h4>研究背景与目标</h4>
+        <p>${topic.desc}</p>
+      </div>
+    </div>
+
+    <div class="topic-detail-section">
+      <div class="topic-detail-section-title">难度评估</div>
+      <div class="topic-detail-content-box">
+        <h4>${diffMap[topic.difficulty]} · ${diffDesc[topic.difficulty]}</h4>
+        <p>该题目涉及关键词：${topic.tags.join('、')}。建议在选择前充分了解相关领域知识，并结合自身兴趣与能力综合考虑。</p>
+      </div>
+    </div>
+
+    <div class="topic-detail-section">
+      <div class="topic-detail-section-title">所属设计方向</div>
+      <div class="topic-detail-direction-card" style="--detail-accent:${selectedDirection.color};" id="backToDirFromTopic">
+        <div class="topic-detail-direction-icon" style="background:${selectedDirection.colorBg};">${selectedDirection.icon}</div>
+        <div class="topic-detail-direction-info">
+          <h4>${selectedDirection.name}</h4>
+          <p>${selectedDirection.tag} · 共 ${selectedDirection.topics.length} 个可选题目</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-detail-action">
+      <button class="btn btn-primary" id="selectTopicBtn" data-id="${topic.id}">选择此题目，进入选导师 →</button>
+    </div>
+  `;
+
+  listView.classList.add('hidden');
+  detailView.classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  document.getElementById('selectTopicBtn').addEventListener('click', (e) => {
+    selectedTopic = selectedDirection.topics.find(t => t.id === e.target.dataset.id);
+    goToStep(3);
+  });
+}
+
+// ===== Back to Topic List =====
+document.getElementById('backToTopicList').addEventListener('click', () => {
+  document.getElementById('topicListView').classList.remove('hidden');
+  document.getElementById('topicDetailView').classList.remove('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 // ===== Render Supervisors =====
 function renderSupervisors() {
@@ -1725,7 +2065,12 @@ function goToStep(step) {
     document.getElementById('dirListView').classList.remove('hidden');
     document.getElementById('dirDetailView').classList.remove('show');
   }
-  if (step === 2) renderTopics();
+  if (step === 2) {
+    // Reset to topic list view
+    document.getElementById('topicListView').classList.remove('hidden');
+    document.getElementById('topicDetailView').classList.remove('show');
+    renderTopics();
+  }
   if (step === 3) renderSupervisors();
   if (step === 4) renderConfirmation();
 }
@@ -1735,10 +2080,17 @@ document.getElementById('backToStep1').addEventListener('click', () => {
   // Reset to list view when going back to step 1
   document.getElementById('dirListView').classList.remove('hidden');
   document.getElementById('dirDetailView').classList.remove('show');
+  // Reset topic views too
+  document.getElementById('topicListView').classList.remove('hidden');
+  document.getElementById('topicDetailView').classList.remove('show');
   goToStep(1);
 });
-document.getElementById('toStep3').addEventListener('click', () => goToStep(3));
-document.getElementById('backToStep2').addEventListener('click', () => goToStep(2));
+document.getElementById('backToStep2').addEventListener('click', () => {
+  // Reset to topic list view when going back to step 2
+  document.getElementById('topicListView').classList.remove('hidden');
+  document.getElementById('topicDetailView').classList.remove('show');
+  goToStep(2);
+});
 document.getElementById('toStep4').addEventListener('click', () => goToStep(4));
 document.getElementById('backToStep3').addEventListener('click', () => goToStep(3));
 
