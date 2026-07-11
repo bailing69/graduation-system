@@ -478,6 +478,276 @@ header p {
   stroke-width: 3;
 }
 
+/* ===== Direction Detail View ===== */
+.dir-detail-view { display: none; animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.dir-detail-view.show { display: block; }
+.dir-list-view.hidden { display: none; }
+
+.dir-detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  margin-bottom: 28px;
+  font-family: inherit;
+}
+
+.dir-detail-back:hover {
+  background: var(--glass-hover);
+  color: var(--text-primary);
+  border-color: rgba(74, 143, 231, 0.3);
+  transform: translateX(-4px);
+}
+
+.dir-detail-back svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.dir-detail-hero {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-lift);
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dir-detail-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--detail-accent, var(--gold));
+  box-shadow: 0 0 16px var(--detail-accent, var(--gold));
+}
+
+.dir-detail-hero::after {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: var(--detail-accent-bg, rgba(232, 197, 108, 0.06));
+  filter: blur(40px);
+}
+
+.dir-detail-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  background: var(--detail-accent-bg, rgba(232, 197, 108, 0.1));
+  position: relative;
+  z-index: 1;
+}
+
+.dir-detail-tag {
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 14px;
+  border-radius: 100px;
+  background: var(--detail-accent-bg, rgba(232, 197, 108, 0.1));
+  color: var(--detail-accent, var(--gold));
+  margin-bottom: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+.dir-detail-hero h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.dir-detail-hero p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.dir-detail-stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.dir-detail-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.dir-detail-stat strong {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--detail-accent, var(--gold));
+}
+
+.dir-detail-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dir-detail-section-title::before {
+  content: '';
+  width: 3px;
+  height: 18px;
+  background: var(--detail-accent, var(--gold));
+  border-radius: 2px;
+}
+
+.dir-detail-topics {
+  margin-bottom: 28px;
+}
+
+.dir-detail-topic-item {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 22px;
+  margin-bottom: 12px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.dir-detail-topic-item:hover {
+  border-color: var(--detail-accent, var(--gold));
+  transform: translateX(6px);
+}
+
+.dir-detail-topic-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--detail-accent-bg, rgba(232, 197, 108, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--detail-accent, var(--gold));
+  flex-shrink: 0;
+}
+
+.dir-detail-topic-info h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.dir-detail-topic-info p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.dir-detail-supervisors {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.dir-detail-supervisor-item {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.dir-detail-supervisor-item:hover {
+  border-color: rgba(74, 143, 231, 0.3);
+}
+
+.dir-detail-supervisor-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.dir-detail-supervisor-info h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dir-detail-supervisor-info p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.dir-detail-action {
+  text-align: center;
+  padding: 12px 0;
+}
+
+.dir-detail-action .btn-primary {
+  padding: 16px 48px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .dir-detail-supervisors { grid-template-columns: 1fr; }
+  .dir-detail-hero { padding: 24px 20px; }
+  .dir-detail-hero h2 { font-size: 22px; }
+}
+
 /* ===== Topic Cards ===== */
 .topic-list {
   display: flex;
@@ -1011,13 +1281,22 @@ footer {
 
   <!-- Step 1: Direction Selection -->
   <div class="step-panel active" id="panel-1">
-    <div class="section-title">
-      <h2>选择毕业设计方向</h2>
-      <p>请选择你最感兴趣的设计领域，这将决定你的研究路径与导师匹配范围</p>
+    <!-- Direction List View -->
+    <div class="dir-list-view" id="dirListView">
+      <div class="section-title">
+        <h2>选择毕业设计方向</h2>
+        <p>点击任意方向卡片可查看详细信息，选择最适合你的设计领域</p>
+      </div>
+      <div class="cards-grid" id="directionsGrid"></div>
     </div>
-    <div class="cards-grid" id="directionsGrid"></div>
-    <div class="nav-buttons">
-      <button class="btn btn-primary" id="toStep2" disabled>下一步：选择题目</button>
+
+    <!-- Direction Detail View -->
+    <div class="dir-detail-view" id="dirDetailView">
+      <button class="dir-detail-back" id="backToDirList">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        返回方向列表
+      </button>
+      <div id="dirDetailContent"></div>
     </div>
   </div>
 
@@ -1256,13 +1535,86 @@ function renderDirections() {
 
   grid.querySelectorAll('.direction-card').forEach(card => {
     card.addEventListener('click', () => {
-      grid.querySelectorAll('.direction-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      selectedDirection = directions.find(d => d.id === card.dataset.id);
-      document.getElementById('toStep2').disabled = false;
+      const dir = directions.find(d => d.id === card.dataset.id);
+      showDirectionDetail(dir);
     });
   });
 }
+
+// ===== Show Direction Detail =====
+function showDirectionDetail(dir) {
+  const listView = document.getElementById('dirListView');
+  const detailView = document.getElementById('dirDetailView');
+  const content = document.getElementById('dirDetailContent');
+
+  const matchedSupervisors = supervisors.filter(s => s.directions.includes(dir.id));
+  const diffMap = { basic: '基础', intermediate: '进阶', advanced: '挑战' };
+
+  content.innerHTML = `
+    <div class="dir-detail-hero" style="--detail-accent:${dir.color};--detail-accent-bg:${dir.colorBg};">
+      <div class="dir-detail-icon">${dir.icon}</div>
+      <span class="dir-detail-tag">${dir.tag}</span>
+      <h2>${dir.name}</h2>
+      <p>${dir.desc}</p>
+      <div class="dir-detail-stats">
+        <div class="dir-detail-stat">📋 <strong>${dir.meta.topics}</strong> 个可选题目</div>
+        <div class="dir-detail-stat">👨‍🏫 <strong>${matchedSupervisors.length}</strong> 位匹配导师</div>
+      </div>
+    </div>
+
+    <div class="dir-detail-topics">
+      <div class="dir-detail-section-title">本方向可选题目</div>
+      ${dir.topics.map((t, i) => `
+        <div class="dir-detail-topic-item">
+          <div class="dir-detail-topic-num">${String(i + 1).padStart(2, '0')}</div>
+          <div class="dir-detail-topic-info">
+            <h4>${t.title}</h4>
+            <p>${t.desc}</p>
+            <div class="topic-tags" style="margin-top:8px;">
+              ${t.tags.map(tag => `<span>${tag}</span>`).join('')}
+              <span class="topic-difficulty ${t.difficulty}">${diffMap[t.difficulty]}</span>
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div>
+      <div class="dir-detail-section-title">本方向导师</div>
+      <div class="dir-detail-supervisors">
+        ${matchedSupervisors.map(s => `
+          <div class="dir-detail-supervisor-item">
+            <div class="dir-detail-supervisor-avatar" style="background:linear-gradient(135deg,${s.color},${s.color}aa);">${s.avatar}</div>
+            <div class="dir-detail-supervisor-info">
+              <h4>${s.name}</h4>
+              <p>${s.title} · 剩余 ${s.slots} 个名额</p>
+            </div>
+          </div>
+        `).join('') || '<p style="color:var(--text-muted);font-size:14px;">暂无匹配导师</p>'}
+      </div>
+    </div>
+
+    <div class="dir-detail-action">
+      <button class="btn btn-primary" id="selectDirBtn" data-id="${dir.id}">选择此方向，进入选题 →</button>
+    </div>
+  `;
+
+  listView.classList.add('hidden');
+  detailView.classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  document.getElementById('selectDirBtn').addEventListener('click', (e) => {
+    selectedDirection = directions.find(d => d.id === e.target.dataset.id);
+    goToStep(2);
+  });
+}
+
+// ===== Back to Direction List =====
+document.getElementById('backToDirList').addEventListener('click', () => {
+  document.getElementById('dirListView').classList.remove('hidden');
+  document.getElementById('dirDetailView').classList.remove('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 // ===== Render Topics =====
 function renderTopics() {
@@ -1368,14 +1720,23 @@ function goToStep(step) {
   currentStep = step;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
+  if (step === 1) {
+    // Reset to direction list view
+    document.getElementById('dirListView').classList.remove('hidden');
+    document.getElementById('dirDetailView').classList.remove('show');
+  }
   if (step === 2) renderTopics();
   if (step === 3) renderSupervisors();
   if (step === 4) renderConfirmation();
 }
 
 // ===== Event Listeners =====
-document.getElementById('toStep2').addEventListener('click', () => goToStep(2));
-document.getElementById('backToStep1').addEventListener('click', () => goToStep(1));
+document.getElementById('backToStep1').addEventListener('click', () => {
+  // Reset to list view when going back to step 1
+  document.getElementById('dirListView').classList.remove('hidden');
+  document.getElementById('dirDetailView').classList.remove('show');
+  goToStep(1);
+});
 document.getElementById('toStep3').addEventListener('click', () => goToStep(3));
 document.getElementById('backToStep2').addEventListener('click', () => goToStep(2));
 document.getElementById('toStep4').addEventListener('click', () => goToStep(4));
